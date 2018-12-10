@@ -8,9 +8,19 @@ const rock_div = document.getElementById("r");
 const paper_div = document.getElementById("p");
 const scissors_div = document.getElementById("s");
 
+const comp_img = document.getElementById('computer-img')
+const user_img = document.getElementById('user-img')
+
 function getComputerchoice() {
   const choices = ['r', 'p', 's'];
   const randomNumber = ((Math.floor(Math.random()*3)));
+  if (randomNumber === 0) {
+    comp_img.src = "images/rock.png";
+  } else if (randomNumber === 1) {
+    comp_img.src = "images/paper.png";
+  } else {
+    comp_img.src = "images/scissors.png";
+  }
   return choices[randomNumber];
 }
 
@@ -27,6 +37,8 @@ function win(user, computer) {
   const smallUserWord = "user".fontsize(3).sub();
   const smallCompWord = "comp".fontsize(3).sub();
   result_p.innerHTML = convertToWord(user) + smallUserWord + " beats " + convertToWord(computer) + smallCompWord + ". You win! 🔥";
+  document.getElementById(user).classList.add('green-glow');
+  setTimeout(function() {document.getElementById(user).classList.remove('green-glow')}, 500);
 }
 
 function lose(user, computer) {
@@ -36,12 +48,16 @@ function lose(user, computer) {
   const smallUserWord = "user".fontsize(3).sub();
   const smallCompWord = "comp".fontsize(3).sub();
   result_p.innerHTML = convertToWord(user) + smallUserWord + " loses to " + convertToWord(computer) + smallCompWord + ". You lose! 💩";
+  document.getElementById(user).classList.add('red-glow');
+  setTimeout(function() {document.getElementById(user).classList.remove('red-glow')}, 500);
 }
 
 function draw(user, computer) {
   const smallUserWord = "user".fontsize(3).sub();
   const smallCompWord = "comp".fontsize(3).sub();
   result_p.innerHTML = convertToWord(user) + smallUserWord + " draws with " + convertToWord(computer) + smallCompWord + "🤨";
+  document.getElementById(user).classList.add('gray-glow');
+  setTimeout(function() {document.getElementById(user).classList.remove('gray-glow')}, 500);
 }
 
 function game(userChoice) {
@@ -69,15 +85,22 @@ function game(userChoice) {
 }
 
 function main() {
+
+  comp_img.src = "";
+  user_img.src = "";
+
   rock_div.addEventListener('click', function() {
     game("r");
+    user_img.src = "images/rock.png";
 
   })
   paper_div.addEventListener('click', function() {
     game("p");
+    user_img.src = "images/paper.png";
   })
   scissors_div.addEventListener('click', function() {
     game("s");
+    user_img.src = "images/scissors.png";
   })
 }
 
