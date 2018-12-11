@@ -80,7 +80,15 @@ function game(userChoice) {
     case "ss":
       draw(userChoice, computerChoice);
       break
+  }
+  checkWinner();
+}
 
+function checkWinner() {
+  if (userScore > 5) {
+    alert("You Win!");
+  } else if (computerScore > 5) {
+    alert("Computer wins!")
   }
 }
 
