@@ -15,11 +15,11 @@ function getComputerchoice() {
   const choices = ['r', 'p', 's'];
   const randomNumber = ((Math.floor(Math.random()*3)));
   if (randomNumber === 0) {
-    comp_img.src = "images/rock.png";
+    comp_img.src = "images/rock.PNG";
   } else if (randomNumber === 1) {
-    comp_img.src = "images/paper.png";
+    comp_img.src = "images/paper.PNG";
   } else {
-    comp_img.src = "images/scissors.png";
+    comp_img.src = "images/scissors.PNG";
   }
   return choices[randomNumber];
 }
@@ -34,9 +34,9 @@ function win(user, computer) {
   userScore++;
   userScore_span.innerHTML = userScore;
   computerScore_span.innerHTML = computerScore;
-  const smallUserWord = "user".fontsize(3).sub();
-  const smallCompWord = "comp".fontsize(3).sub();
-  result_p.innerHTML = convertToWord(user) + smallUserWord + " beats " + convertToWord(computer) + smallCompWord + ". You win! 🔥";
+  const smUserWord = "user".fontsize(3).sub();
+  const smCompWord = "comp".fontsize(3).sub();
+  result_p.innerHTML = convertToWord(user) + smUserWord + " beats " + convertToWord(computer) + smCompWord + ". You win! 🔥";
   document.getElementById(user).classList.add('green-glow');
   setTimeout(function() {document.getElementById(user).classList.remove('green-glow')}, 500);
 }
@@ -45,17 +45,17 @@ function lose(user, computer) {
   computerScore++;
   userScore_span.innerHTML = userScore;
   computerScore_span.innerHTML = computerScore;
-  const smallUserWord = "user".fontsize(3).sub();
-  const smallCompWord = "comp".fontsize(3).sub();
-  result_p.innerHTML = convertToWord(user) + smallUserWord + " loses to " + convertToWord(computer) + smallCompWord + ". You lose! 💩";
+  const smUserWord = "user".fontsize(3).sub();
+  const smCompWord = "comp".fontsize(3).sub();
+  result_p.innerHTML = convertToWord(user) + smUserWord + " loses to " + convertToWord(computer) + smCompWord + ". You lose! 💩";
   document.getElementById(user).classList.add('red-glow');
   setTimeout(function() {document.getElementById(user).classList.remove('red-glow')}, 500);
 }
 
 function draw(user, computer) {
-  const smallUserWord = "user".fontsize(3).sub();
-  const smallCompWord = "comp".fontsize(3).sub();
-  result_p.innerHTML = convertToWord(user) + smallUserWord + " draws with " + convertToWord(computer) + smallCompWord + "🤨";
+  const smUserWord = "user".fontsize(3).sub();
+  const smCompWord = "comp".fontsize(3).sub();
+  result_p.innerHTML = convertToWord(user) + smUserWord + " draws with " + convertToWord(computer) + smCompWord + "🤨";
   document.getElementById(user).classList.add('gray-glow');
   setTimeout(function() {document.getElementById(user).classList.remove('gray-glow')}, 500);
 }
@@ -99,16 +99,16 @@ function main() {
 
   rock_div.addEventListener('click', function() {
     game("r");
-    user_img.src = "images/rock.png";
+    user_img.src = "images/rock.PNG";
 
   })
   paper_div.addEventListener('click', function() {
     game("p");
-    user_img.src = "images/paper.png";
+    user_img.src = "images/paper.PNG";
   })
   scissors_div.addEventListener('click', function() {
     game("s");
-    user_img.src = "images/scissors.png";
+    user_img.src = "images/scissors.PNG";
   })
 }
 
