@@ -34,9 +34,7 @@ function win(user, computer) {
   userScore++;
   userScore_span.innerHTML = userScore;
   computerScore_span.innerHTML = computerScore;
-  const smUserWord = "user".fontsize(3).sub();
-  const smCompWord = "comp".fontsize(3).sub();
-  result_p.innerHTML = convertToWord(user) + smUserWord + " beats " + convertToWord(computer) + smCompWord + ". You win! 🔥";
+  result_p.innerHTML = convertToWord(user) + " beats " + convertToWord(computer) + ". You win! 🔥";
   document.getElementById(user).classList.add('green-glow');
   setTimeout(function() {document.getElementById(user).classList.remove('green-glow')}, 500);
 }
@@ -45,17 +43,13 @@ function lose(user, computer) {
   computerScore++;
   userScore_span.innerHTML = userScore;
   computerScore_span.innerHTML = computerScore;
-  const smUserWord = "user".fontsize(3).sub();
-  const smCompWord = "comp".fontsize(3).sub();
-  result_p.innerHTML = convertToWord(user) + smUserWord + " loses to " + convertToWord(computer) + smCompWord + ". You lose! 💩";
+  result_p.innerHTML = convertToWord(user) + " loses to " + convertToWord(computer) + ". You lose! 💩";
   document.getElementById(user).classList.add('red-glow');
   setTimeout(function() {document.getElementById(user).classList.remove('red-glow')}, 500);
 }
 
 function draw(user, computer) {
-  const smUserWord = "user".fontsize(3).sub();
-  const smCompWord = "comp".fontsize(3).sub();
-  result_p.innerHTML = convertToWord(user) + smUserWord + " draws with " + convertToWord(computer) + smCompWord + "🤨";
+  result_p.innerHTML = convertToWord(user) + " draws with " + convertToWord(computer) + "🤨";
   document.getElementById(user).classList.add('gray-glow');
   setTimeout(function() {document.getElementById(user).classList.remove('gray-glow')}, 500);
 }
@@ -85,10 +79,10 @@ function game(userChoice) {
 }
 
 function checkWinner() {
-  if (userScore > 5) {
-    alert("You Win!");
-  } else if (computerScore > 5) {
-    alert("Computer wins!")
+  if (userScore > 1) {
+    openNav("You're a winner!");
+  } else if (computerScore > 1) {
+    openNav("Computer wins. Try again.");
   }
 }
 
@@ -110,6 +104,31 @@ function main() {
     game("s");
     user_img.src = "images/scissors.PNG";
   })
+
+  document.querySelector('.overlay-content button').addEventListener('click', function() {
+    closeNav();
+    resetScoreBoard();
+
+
+  })
 }
 
 main();
+
+
+function resetScoreBoard() {
+  userScore = 0;
+  computerScore = 0;
+  userScore_span.innerHTML = userScore;
+  computerScore_span.innerHTML = computerScore;
+}
+
+// code for opening/closing modal
+function openNav(msg) {
+  document.querySelector('.overlay-content h1').innerHTML = msg;
+  document.getElementById("myNav").style.height = "100%";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.height = "0%";
+}
